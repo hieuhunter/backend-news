@@ -15,11 +15,11 @@ class CreateCategoriesTable extends Migration
     {
         Schema::create('categories', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('parent_id')->nullable()->constrained('categories');
-			$table->unsignedInteger('_lft')->default(0);
-			$table->unsignedInteger('_rgt')->default(0);
-			$table->string('name');
-			$table->string('slug')->unique();
+            /*   $table->foreignId('parent_id')->nullable()->constrained('categories'); */
+          /*   $table->unsignedInteger('_lft')->default(0);
+            $table->unsignedInteger('_rgt')->default(0); */
+            $table->string('name');
+            $table->string('slug')->unique();
             $table->timestamps();
         });
     }

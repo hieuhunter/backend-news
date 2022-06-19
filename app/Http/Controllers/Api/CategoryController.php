@@ -20,7 +20,7 @@ class CategoryController extends Controller
 	{
 		$categories = new Category();
 		$categoriesCount = $categories->get()->count();
-		$categories = $categories->whereNull('parent_id')->get()/* ->pagination(30) */;
+		$categories = $categories->paginate();
 		return $this->respondSuccessWithPagination(new CategoryCollection($categories), $categoriesCount);
 	}
 }

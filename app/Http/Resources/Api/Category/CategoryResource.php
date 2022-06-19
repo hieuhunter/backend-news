@@ -17,12 +17,12 @@ class CategoryResource extends JsonResource
 	{
 		return [
 			'id' => $this->id,
-			'parent_id' => $this->parent_id,
+			/* 	'parent_id' => $this->parent_id, */
 			'name' => $this->name,
 			'slug' => $this->slug,
 			'created_at' => $this->created_at,
 			'updated_at' => $this->updated_at,
-			'children' => new CategoryCollection(Category::descendantsOf($this->id)->toTree()),
+			/* 	'children' => new CategoryCollection(Category::descendantsOf($this->id)->toTree()), */
 		];
 	}
 }
