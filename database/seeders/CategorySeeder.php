@@ -38,6 +38,5 @@ class CategorySeeder extends Seeder
 			Category::create($category);
 		}
 
-		Category::fixTree();
     }
 }
