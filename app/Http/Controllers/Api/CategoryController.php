@@ -9,18 +9,18 @@ use App\Traits\ApiResponser;
 
 class CategoryController extends Controller
 {
-	use ApiResponser;
+    use ApiResponser;
 
-	/**
-	 * Display a listing of the resource.
-	 *
-	 * @return \Illuminate\Http\Response
-	 */
-	public function index()
-	{
-		$categories = new Category();
-		$categoriesCount = $categories->get()->count();
-		$categories = $categories->paginate();
-		return $this->respondSuccessWithPagination(new CategoryCollection($categories), $categoriesCount);
-	}
+    /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function index()
+    {
+        $categories = new Category();
+        $categoriesCount = $categories->get()->count();
+        $categories = $categories->pagination();
+        return $this->respondSuccessWithPagination(new CategoryCollection($categories), $categoriesCount);
+    }
 }
