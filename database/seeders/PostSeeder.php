@@ -1,6 +1,7 @@
 <?php
 
 namespace Database\Seeders;
+
 use App\Models\Post;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\Storage;
@@ -15,21 +16,21 @@ class PostSeeder extends Seeder
      */
     public function run()
     {
-        Post::factory(10)->create();
-   /*  $json = Storage::disk('public')->get('posts.json');
-    $post = json_decode($json);
+        /*  Post::factory(10)->create(); */
+        $json = Storage::disk('public')->get('posts.json');
+        $posts = json_decode($json);
 
-    foreach ($post as $key => $value) {
-        Post::create([  
-            'user_id' => $value->user_id,
-            'category_id' => $value->category_id,
-            'title' => $value->title,
-            'slug' => $value->slug,
-            'excerpt' => $value->excerpt,
-            'content' => $value->content,
-            'image' => $value->image,
-            'status' => $value->status,
-        ]);
-    } */
-}
+        foreach ($posts as $post) {
+            Post::create([
+                'user_id' => $post->user_id,
+                'category_id' => $post->category_id,
+                'title' => $post->title,
+                'slug' =>  $post->slug,
+                'excerpt' => $post->excerpt,
+                'content' => $post->content,
+                'image' => $post->image,
+                'status' => $post->status,
+            ]);
+        }
+    }
 }
