@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Api\CategoryController;
 use App\Http\Controllers\Api\PostController;
+use App\Http\Controllers\Api\TagController;
 use App\Http\Controllers\AuthController;
 
 /*
@@ -21,6 +22,7 @@ Route::post('/auth/signup', [AuthController::class, 'signUp']);
 
 Route::get('/categories', [CategoryController::class, 'index']);
 Route::get('/posts', [PostController::class, 'index']);
+Route::get('/tags', [TagController::class, 'index']);
 
 Route::group(['middleware' => ['auth:sanctum']], function () {
 	Route::get('/auth/me', [AuthController::class, 'me']);

@@ -2,18 +2,21 @@
 
 namespace Database\Factories;
 
+use App\Models\Post;
+use App\Models\Tag;
+
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 class PostTagFactory extends Factory
 {
-    /**
-     * Define the model's default state.
-     *
-     * @return array
-     */
-    public function definition()
-    {
-        $posts_count = Post::all()->count();
+	/**
+	 * Define the model's default state.
+	 *
+	 * @return array
+	 */
+	public function definition()
+	{
+		$posts_count = Post::all()->count();
 		$tags_count = Tag::all()->count();
 		$post_tags = [];
 		for ($i = 1; $i <= $posts_count; $i++) {
@@ -30,5 +33,5 @@ class PostTagFactory extends Factory
 			'post_id' => $post_id,
 			'tag_id' => $tag_id
 		];
-    }
+	}
 }

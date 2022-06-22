@@ -8,15 +8,14 @@ use Illuminate\Database\Eloquent\Model;
 
 class Tag extends Model
 {
-	use HasFactory, CustomScope;
+    use HasFactory, CustomScope;
+    protected $fillable = [
+        'name',
+        'slug',
+    ];
 
-	protected $fillable = [
-		'name',
-		'slug',
-	];
-
-	public function posts()
-	{
-		return $this->belongsToMany(Post::class, 'post_tags');
-	}
+    public function posts()
+    {
+        return $this->belongsToMany(Post::class, 'post_tags');
+    }
 }
