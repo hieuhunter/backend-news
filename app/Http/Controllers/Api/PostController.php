@@ -34,7 +34,7 @@ class PostController extends Controller
             });
         }
         $postsCount = $posts->get()->count();
-        $posts = $posts->paginate();
+        $posts = $posts->pagination();
         return $this->respondSuccessWithPagination(new PostCollection($posts), $postsCount);
     }
     public function show($slug)
