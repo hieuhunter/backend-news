@@ -16,13 +16,13 @@ class CreatePostsTable extends Migration
         Schema::create('posts', function (Blueprint $table) {
             $table->id();
             $table->foreignId('user_id')->constrained('users');
-			$table->foreignId('category_id')->constrained('categories');
-			$table->string('title');
-			$table->string('slug')->unique();
-			$table->string('excerpt', 666)->nullable();
-			$table->text('content');
-			$table->string('image')->nullable();
-			$table->enum('status', ['publish', 'pending', 'draft', 'trash'])->default('draft');
+            $table->foreignId('category_id')->constrained('categories');
+            $table->string('title');
+            $table->string('slug')->unique();
+            $table->string('excerpt', 666)->nullable();
+            $table->text('content');
+            $table->string('image')->nullable();
+            $table->enum('status', ['publish', 'pending', 'draft', 'trash'])->default('draft');
             $table->timestamps();
         });
     }

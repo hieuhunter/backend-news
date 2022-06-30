@@ -14,20 +14,16 @@ class UserSeeder extends Seeder
      */
     public function run()
     {
-        $user = [
-            [
-                'first_name' => 'Hieu',
-                'last_name' => 'Le',
-                'user_name' => 'hieukusok',
-                'email' => 'admin01@gmail.com',
-                'password' => 'hieukusok',
-                'role' => 'owner',
-                'status' => 'active',
-            ]
-        ];
+        User::create([
+            'first_name' => 'Hieu',
+            'last_name' => 'Le',
+            'user_name' => 'hieukusok',
+            'email' => 'admin01@gmail.com',
+            'password' => 'hieukusok',
+            'role' => 'owner',
+            'actived' => true,
 
-        foreach ($user as $user) {
-            User::create($user);
-        }
+        ]);
+        User::factory(50)->create();
     }
 }

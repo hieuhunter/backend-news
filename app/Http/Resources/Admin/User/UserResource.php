@@ -1,10 +1,10 @@
 <?php
 
-namespace App\Http\Resources;
+namespace App\Http\Resources\Admin\User;
 
 use Illuminate\Http\Resources\Json\JsonResource;
 
-class MeResource extends JsonResource
+class UserResource extends JsonResource
 {
     /**
      * Transform the resource into an array.
@@ -21,9 +21,8 @@ class MeResource extends JsonResource
             'user_name' => $this->user_name,
             'avatar_url' => $this->avatar_url,
             'email' => $this->email,
-            'email_verified_at' => $this->email_verified_at,
             'role' => $this->role,
-            'status' => $this->status,
+            'actived' => $this->actived,
             'created_at' => $this->created_at,
             'updated_at' => $this->updated_at,
         ];

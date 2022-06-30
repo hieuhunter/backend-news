@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Resources;
+namespace App\Http\Resources\Admin\Post;
 
 use Illuminate\Http\Resources\Json\JsonResource;
 
@@ -22,8 +22,6 @@ class UserResource extends JsonResource
             'avatar_url' => $this->avatar_url,
             'email' => $this->email,
             'email_verified_at' => $this->email_verified_at,
-            'role' => $this->role,
-            'status' => $this->status,
             'created_at' => $this->created_at,
             'updated_at' => $this->updated_at,
         ];

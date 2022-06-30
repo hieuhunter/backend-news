@@ -13,16 +13,19 @@ class CreatePostTagsTable extends Migration
      */
     public function up()
     {
-        Schema::create('posts', function (Blueprint $table) {
+        Schema::create('post_tags', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('user_id')->constrained('users');
-            $table->foreignId('category_id')->constrained('categories');
-            $table->string('title');
-            $table->string('slug')->unique();
-            $table->string('excerpt', 666)->nullable();
-            $table->text('content');
-            $table->string('image')->nullable();
-            $table->enum('status', ['publish', 'pending', 'draft', 'trash'])->default('draft');
+            $table
+                ->foreignId('post_id')
+                ->constrained('posts')
+                ->onUpdate('cascade')
+                ->onDelete('cascade');
+            $table
+                ->foreignId('tag_id')
+                ->constrained('tags')
+                ->onUpdate('cascade')
+                ->onDelete('cascade');
+            $table->unique(['post_id', 'tag_id']);
             $table->timestamps();
         });
     }
@@ -34,6 +37,6 @@ class CreatePostTagsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('posts');
+        Schema::dropIfExists('post_tags');
     }
 }

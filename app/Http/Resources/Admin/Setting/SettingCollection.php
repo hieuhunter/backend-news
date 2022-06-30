@@ -1,10 +1,10 @@
 <?php
 
-namespace App\Http\Resources;
+namespace App\Http\Resources\Admin\Setting;;
 
 use Illuminate\Http\Resources\Json\ResourceCollection;
 
-class UserCollection extends ResourceCollection
+class SettingCollection extends ResourceCollection
 {
     /**
      * Transform the resource collection into an array.
@@ -14,6 +14,6 @@ class UserCollection extends ResourceCollection
      */
     public function toArray($request)
     {
-        return UserResource::collection($this->collection);
+        return SettingResource::collection($this->collection);
     }
 }

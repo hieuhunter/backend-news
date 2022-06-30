@@ -1,11 +1,11 @@
 <?php
 
-namespace App\Http\Requests;
+namespace App\Http\Requests\Admin;
 
 use App\Traits\CustomFormRequest;
 use Illuminate\Foundation\Http\FormRequest;
 
-class SignupAuthRequest extends FormRequest
+class StoreUserRequest extends FormRequest
 {
     use CustomFormRequest;
 
@@ -21,7 +21,10 @@ class SignupAuthRequest extends FormRequest
             'last_name' => 'required|string|max:20',
             'user_name' => 'required|string|min:3|max:20|unique:users',
             'email' => 'required|string|email|max:255|unique:users',
-            'password' => 'required|string|min:6|max:66'
+            'password' => 'required|string|min:6|max:66',
+            'avatar' => 'nullable|string|max:255',
+            'role' => 'required|string|in:owner,admin,moderator,member',
+            'actived' => 'required|boolean',
         ];
     }
 }

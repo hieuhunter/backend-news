@@ -23,8 +23,8 @@ class CreateUsersTable extends Migration
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
             $table->rememberToken();
-            $table->enum('role', ['owner', 'admin', 'moderator', 'guest'])->default('guest');
-            $table->enum('status', ['active', 'inactive', 'banned'])->default('inactive');
+            $table->enum('role', ['owner', 'admin', 'moderator', 'member'])->default('member');
+            $table->boolean('actived')->default(false);
             $table->timestamps();
         });
     }
