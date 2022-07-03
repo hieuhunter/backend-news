@@ -56,6 +56,8 @@ return [
 
     'asset_url' => env('ASSET_URL', null),
 
+	'img_url' => env('IMG_URL', 'http://localhost/images'),
+
     /*
     |--------------------------------------------------------------------------
     | Application Timezone

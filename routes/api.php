@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\Admin\CategoryController as AdminCategoryController;
+use App\Http\Controllers\Admin\PostController as AdminPostController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Admin\SettingController;
 use App\Http\Controllers\Admin\UserController;
@@ -51,6 +53,18 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth:sanctum', 'actived']],
 	Route::put('/users/{id}', [UserController::class, 'update'])->middleware('role:owner');
 	Route::delete('/users/{id}', [UserController::class, 'destroy'])->middleware('role:owner');
 
-	Route::get('/settings', [SettingController::class, 'show']);
-	Route::put('/settings', [SettingController::class, 'update']);
+	Route::get('/settings', [SettingController::class, 'show'])->middleware('role:owner|admin|moderator');
+	Route::put('/settings', [SettingController::class, 'update'])->middleware('role:owner|admin|moderator');
+
+	Route::get('/posts', [AdminPostController::class, 'index'])->middleware('role:owner|admin|moderator');
+	Route::get('/posts/{id}', [AdminPostController::class, 'show'])->middleware('role:owner|admin|moderator');
+	Route::post('/posts', [AdminPostController::class, 'store'])->middleware('role:owner|admin|moderator');
+	Route::put('/posts/{id}', [AdminPostController::class, 'update'])->middleware('role:owner|admin');
+	Route::delete('/posts/{id}', [AdminPostController::class, 'destroy'])->middleware('role:owner');
+
+	Route::get('/categories', [AdminCategoryController::class, 'index'])->middleware('role:owner|admin|moderator');
+	Route::get('/categories/{id}', [AdminCategoryController::class, 'show'])->middleware('role:owner|admin|moderator');
+	Route::post('/categories', [AdminCategoryController::class, 'store'])->middleware('role:owner|admin|moderator');
+	Route::put('/categories/{id}', [AdminCategoryController::class, 'update'])->middleware('role:owner|admin');
+	Route::delete('/categories/{id}', [AdminCategoryController::class, 'destroy'])->middleware('role:owner');
 });

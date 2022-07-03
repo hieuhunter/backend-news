@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Admin\StorePostRequest;
+use App\Http\Requests\Admin\UpdatePostRequest;
 use App\Http\Resources\Admin\Post\PostCollection;
 use App\Http\Resources\Admin\Post\PostResource;
 use App\Models\Category;
@@ -50,7 +51,8 @@ class PostController extends Controller
 		if ($request->has('category')) {
 			$posts = $posts->whereHas('category', function ($q) use ($request) {
 				$descendantCategory = Category::where('slug', $request->category)->first();
-				$q->whereIn('id', Category::descendantsAndSelf($descendantCategory->id ?? null)->pluck('id'));
+				/*  $q->wherein('id',Category::descendantsAndSelf($descendantCategory->id)->pluck('id'));  */
+				$q->where('id', $descendantCategory->id);
 			});
 		}
 
